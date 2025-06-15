@@ -16,9 +16,7 @@ services:
       POSTGRES_NON_ROOT_PASSWORD: ${POSTGRES_NON_ROOT_PASSWORD}
     volumes:
       - db_storage:/var/lib/postgresql/data
-      - type: bind
-        source: ./init-data.sh
-        target: /docker-entrypoint-initdb.d/init-data.sh
+      - ./init-data.sh:/docker-entrypoint-initdb.d/init-data.sh
     healthcheck:
       test:
         [
